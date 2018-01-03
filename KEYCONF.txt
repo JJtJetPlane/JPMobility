@@ -1,0 +1,5 @@
+addkeysection "JPMobility Binds" jpmobkeys
+
+addmenukey "Rad Ass Slide" +jpmobslide
+alias +jpmobslide "use SpectreSlideAttempt"
+alias -jpmobslide "use SpectreSlideCancel"

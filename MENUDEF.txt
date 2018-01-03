@@ -1,0 +1,59 @@
+OptionMenu "OptionsMenu"
+{
+	//referenced from demonsteele because im a lazy shit
+	Title "OPTIONS"
+	Submenu "JPMobility Options", "JPMobilityOptions"
+	StaticText " "
+	Submenu "Customize Controls", "CustomizeControls"
+    Submenu "Mouse options", "MouseOptions"
+    Submenu "Joystick options", "JoystickOptions"
+    
+	StaticText " "
+    
+	Submenu "Player Setup", "PlayerMenu"
+    Submenu "Gameplay Options", "GameplayOptions"
+    Submenu "Compatibility Options", "CompatibilityOptions"
+    Submenu "Automap Options", "AutomapOptions"
+    Submenu "HUD Options", "HUDOptions"
+    Submenu "Miscellaneous Options", "MiscOptions"
+    Submenu "Sound Options", "SoundOptions"
+    Submenu "Display Options", "VideoOptions"
+    Submenu "Set Video Mode", "VideoModeMenu"
+    
+	StaticText " "
+   
+   SafeCommand "Reset to defaults",                "reset2defaults"
+   SafeCommand "Reset to last saved",              "reset2saved"
+   
+   Command "Go to console",                        "menuconsole"
+	
+	
+
+}
+
+OptionMenu "JPMobilityOptions"
+{
+
+	Title "JPMOBILITY OPTIONS"
+
+	StaticText " "
+	StaticText "TOGGLES", 2
+	StaticText " "
+	
+	Option "Allow Sliding", "jpm_enable_slide", "OnOff"
+	Option "Allow Double Jumping", "jpm_enable_djump", "OnOff"
+	Option "Allow Wall Latching", "jpm_enable_latch", "OnOff"
+	
+	StaticText " "
+	StaticText "MOBILITY PREFERENCES", 2
+	StaticText " "
+	Slider "Slide Starting Velocity", "jpm_pref_slidevel", 1, 30, 30
+	
+	StaticText " "
+	StaticText "HUD PREFERENCES", 2
+	StaticText " "
+	
+	Option "Display Stamina Bar", "jpm_draw_staminabar", "OnOff"
+	
+
+}

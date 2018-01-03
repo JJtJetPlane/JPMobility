@@ -1,0 +1,2 @@
+#include "decorate/p_globalvars.txt"
+#include "decorate/p_fx.txt"
