@@ -1,6 +1,6 @@
 # JPMobility
 
-A mobility mod for doom which allows you to slide, dounle jump, and cling to walls!
+A mobility mod for doom which allows you to slide, double jump, and cling to walls!
 
 Current CVARS:
 
