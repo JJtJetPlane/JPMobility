@@ -42,7 +42,7 @@ Script "JPMobilityInit" (void)
 	if(boxheight > 0)
 	{
 	
-		SetActorProperty(0,APROP_VIEWHEIGHT,camheight);
+		SetActorProperty(0,APROP_HEIGHT,boxheight);
 	
 	}
 	
@@ -104,7 +104,7 @@ Script "SpectreSlide" (void)
 				boxheight = GetActorProperty(0,APROP_HEIGHT);
 				
 				SetActorProperty(0,APROP_VIEWHEIGHT,FixedDiv(camheight,CAMLOWER));
-				SetActorProperty(0,APROP_VIEWHEIGHT,FixedDiv(boxheight,CAMLOWER));
+				SetActorProperty(0,APROP_HEIGHT,FixedDiv(boxheight,CAMLOWER));
 				
 				PlaySound(0,"MOBILITY/SLIDE");
 				
