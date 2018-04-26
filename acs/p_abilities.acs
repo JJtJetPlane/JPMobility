@@ -4,7 +4,7 @@
 //This code is hellspawn. If you can make sense of it and fix it up for your own projects, go ahead. Just toss me some credit and s'all good. -JetPlane
 
 #DEFINE HUD_X 320
-#DEFINE HUD_Y 240
+#DEFINE HUD_Y 200
 #DEFINE HTIC 1.0/35 + 1
 
 #DEFINE SLIDEPOWER 1.0
@@ -14,7 +14,8 @@
 #DEFINE CAMLOWER 6.0
 
 global int 56:camheight;
-global int 56:boxheight;
+global int 58:boxheight;
+global int 57:attackheight;
 
 Script "JPMobilityEnter" ENTER
 {
@@ -39,12 +40,20 @@ Script "JPMobilityInit" (void)
 		SetActorProperty(0,APROP_VIEWHEIGHT,camheight);
 	
 	}
+	if(attackheight > 0)
+	{
+	
+		SetActorProperty(0,APROP_ATTACKZOFFSET,attackheight);
+	
+	}
 	if(boxheight > 0)
 	{
 	
 		SetActorProperty(0,APROP_HEIGHT,boxheight);
 	
 	}
+	
+	SetActorProperty(0,APROP_Invulnerable,0);
 	
 	TakeInventory("SpectreSliding",9999);
 	GiveInventory("SpectreSlideAttempt",1);
@@ -66,6 +75,7 @@ Script "SpectreSlide" (void)
 	
 	int slideangle = 0;
 	int curhealth = 100;
+	int curinvuln = 0;
 	
 	while(curhealth > 0)
 	{	
@@ -101,10 +111,13 @@ Script "SpectreSlide" (void)
 				SetActorVelocity(0,xv + FixedMul(cos(slideangle),slidevel),yv + FixedMul(sin(slideangle),slidevel),0.0,0,0);
 				
 				camheight = GetActorProperty(0,APROP_VIEWHEIGHT);
+				attackheight = GetActorProperty(0,APROP_ATTACKZOFFSET);
 				boxheight = GetActorProperty(0,APROP_HEIGHT);
+				curinvuln = GetActorProperty(0,APROP_Invulnerable);
 				
 				SetActorProperty(0,APROP_VIEWHEIGHT,FixedDiv(camheight,CAMLOWER));
-				SetActorProperty(0,APROP_HEIGHT,FixedDiv(boxheight,CAMLOWER));
+				SetActorProperty(0,APROP_ATTACKZOFFSET,-15.0);
+				SetActorProperty(0,APROP_Invulnerable,1);
 				
 				PlaySound(0,"MOBILITY/SLIDE");
 				
@@ -127,6 +140,7 @@ Script "SpectreSlide" (void)
 				
 					TakeInventory("SpectreSliding",999);
 					SetActorProperty(0,APROP_VIEWHEIGHT,camheight);
+					SetActorProperty(0,APROP_ATTACKZOFFSET,attackheight);
 				
 				}
 				
@@ -159,7 +173,9 @@ Script "SpectreSlide" (void)
 					}
 				
 					SetActorProperty(0,APROP_VIEWHEIGHT,camheight);
-					SetActorFlag(0,"SHOOTABLE",1);
+					SetActorProperty(0,APROP_ATTACKZOFFSET,attackheight);
+					SetActorProperty(0,APROP_HEIGHT,boxheight);
+					SetActorProperty(0,APROP_Invulnerable,curinvuln);
 					
 					Delay(1);
 					
